@@ -262,7 +262,7 @@ static NSMutableDictionary * gHistory;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-        return 1;
+    return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -287,7 +287,7 @@ static NSMutableDictionary * gHistory;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIndentifier = @"cell";
-
+    
     if (tableView==_tableView2) {
         
         
@@ -325,25 +325,25 @@ static NSMutableDictionary * gHistory;
             cell = [[MsgTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
         cell.backgroundColor=[UIColor clearColor];
-
+        
         
         cell.textLabel.text=@"11111";
         
         return cell;
-
+        
     }
 }
 
 - (void)upup {
     [_tableView3 setContentOffset:CGPointMake(0, 10*40-200) animated:YES];
-
+    
 }
 
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     NSLog(@"%f",scrollView.contentOffset.y);
-
+    
 }
 #pragma mark - Table view delegate
 
@@ -381,9 +381,6 @@ static NSMutableDictionary * gHistory;
     //    topBg.backgroundColor = [UIColor blackColor];
     //    topBg.alpha=0.3;
     [self.view addSubview:topBg];
-    
-    
-    
     
     
     
@@ -441,9 +438,9 @@ static NSMutableDictionary * gHistory;
     _tableView3.delegate = self;
     _tableView3.backgroundColor = [UIColor clearColor];
     [_tableView3 setShowsHorizontalScrollIndicator:NO];
-//    [_tableView3 setShowsVerticalScrollIndicator:NO];
+    //    [_tableView3 setShowsVerticalScrollIndicator:NO];
     _tableView3.separatorStyle=UITableViewCellSeparatorStyleNone;
-
+    
     [superview addSubview:_tableView3];
     
     [self performSelector:@selector(upup) withObject:nil afterDelay:10];
@@ -537,10 +534,14 @@ static NSMutableDictionary * gHistory;
     }];
     
     
+    //$$关键帧动画
+    //    http://blog.csdn.net/fg313071405/article/details/42673197
+    
     //    [self zoomIn:imgView0 andAnimationDuration:1.0 andWait:NO];
     //    [self zoomOut:imgView0 andAnimationDuration:1.0 andWait:NO];
     
-    [self zoomIn:imgView0 andAnimationDuration:2];
+    
+    //    [self zoomIn:imgView0 andAnimationDuration:2];
     
     UIImageView  *imgView=[UIImageView new];
     [imgView setImage:[ UIImage imageNamed:@"heart1"]];
@@ -556,7 +557,8 @@ static NSMutableDictionary * gHistory;
     
     
     
-    [self performSelector:@selector(doAnimation:) withObject:imgView afterDelay:1];
+    
+    //    [self performSelector:@selector(doAnimation:) withObject:imgView afterDelay:1];
     
     //    [self doAnimation:imgView];
     
@@ -576,6 +578,27 @@ static NSMutableDictionary * gHistory;
     btn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentCenter;
     [btn addTarget:self action:@selector(doneDidTouch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+    
+//    UIView *_view=[[UIView alloc] initWithFrame:CGRectMake(0, 100, screen_width, 200)];
+//    _view.backgroundColor=[UIColor greenColor];
+//    [self.view addSubview:_view];
+//    
+//    [UIView animateWithDuration:4.0 // 动画时长
+//                          delay:2.0 // 动画延迟
+//         usingSpringWithDamping:0 // 类似弹簧振动效果 0~1
+//          initialSpringVelocity:5.0 // 初始速度
+//                        options:UIViewAnimationOptionCurveEaseInOut // 动画过渡效果
+//                     animations:^{
+//                         // code...
+//                         CGPoint point = _view.center;
+//                         point.y += 150;
+//                         [_view setCenter:point];
+//                     } completion:^(BOOL finished) {
+//                         // 动画完成后执行
+//                         // code...
+//                         [_view setAlpha:1];
+//                     }];
     
 }
 

@@ -63,44 +63,44 @@
 
 - (void)initView{
     
-    UIView *topView = UIView.new;
-    topView.backgroundColor = UIColor.greenColor;
-    topView.layer.borderColor = UIColor.blackColor.CGColor;
-    topView.layer.borderWidth = 2;
-    [self.view addSubview:topView];
-    
-    UIView *topSubview = UIView.new;
-    topSubview.backgroundColor = UIColor.blueColor;
-    topSubview.layer.borderColor = UIColor.blackColor.CGColor;
-    topSubview.layer.borderWidth = 2;
-    [topView addSubview:topSubview];
-    
-    UIView *bottomView = UIView.new;
-    bottomView.backgroundColor = UIColor.redColor;
-    bottomView.layer.borderColor = UIColor.blackColor.CGColor;
-    bottomView.layer.borderWidth = 2;
-    [self.view addSubview:bottomView];
-    
-    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(@100);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.height.equalTo(@40);
-    }];
-    
-    [topSubview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(@200);
-        make.centerX.equalTo(@0);
-        make.width.equalTo(@20);
-        make.height.equalTo(@20);
-    }];
-    
-    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.mas_bottomLayoutGuide);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.height.equalTo(@40);
-    }];
+//    UIView *topView = UIView.new;
+//    topView.backgroundColor = UIColor.greenColor;
+//    topView.layer.borderColor = UIColor.blackColor.CGColor;
+//    topView.layer.borderWidth = 2;
+//    [self.view addSubview:topView];
+//    
+//    UIView *topSubview = UIView.new;
+//    topSubview.backgroundColor = UIColor.blueColor;
+//    topSubview.layer.borderColor = UIColor.blackColor.CGColor;
+//    topSubview.layer.borderWidth = 2;
+//    [topView addSubview:topSubview];
+//    
+//    UIView *bottomView = UIView.new;
+//    bottomView.backgroundColor = UIColor.redColor;
+//    bottomView.layer.borderColor = UIColor.blackColor.CGColor;
+//    bottomView.layer.borderWidth = 2;
+//    [self.view addSubview:bottomView];
+//    
+//    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(@100);
+//        make.left.equalTo(self.view);
+//        make.right.equalTo(self.view);
+//        make.height.equalTo(@40);
+//    }];
+//    
+//    [topSubview mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(@200);
+//        make.centerX.equalTo(@0);
+//        make.width.equalTo(@20);
+//        make.height.equalTo(@20);
+//    }];
+//    
+//    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self.mas_bottomLayoutGuide);
+//        make.left.equalTo(self.view);
+//        make.right.equalTo(self.view);
+//        make.height.equalTo(@40);
+//    }];
     
 }
 

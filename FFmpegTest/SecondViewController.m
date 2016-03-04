@@ -48,7 +48,7 @@
     
     self.currentIndex = 0;
     
-    self.contentViewBackgroundColor=orange;
+//    self.contentViewBackgroundColor=orange;
     
     [super viewDidLoad];
     

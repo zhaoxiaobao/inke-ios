@@ -2,7 +2,7 @@
 //  ThirdViewController.h
 //  FFmpegTest
 //
-//  Created by zhaoyuan on 16/2/2.
+//  Created by zhaoyuan on 16/6/11.
 //  Copyright © 2016年 times. All rights reserved.
 //
 

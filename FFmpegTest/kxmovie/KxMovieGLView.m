@@ -186,6 +186,10 @@ static void mat4f_LoadOrtho(float left, float right, float bottom, float top, fl
 
 @implementation KxMovieGLRenderer_RGB
 
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+
 - (BOOL) isValid
 {
     return (_texture != 0);
@@ -339,7 +343,12 @@ static void mat4f_LoadOrtho(float left, float right, float bottom, float top, fl
         glDeleteTextures(3, _textures);
 }
 
+ #pragma clang diagnostic pop
+
+
 @end
+
+
 
 //////////////////////////////////////////////////////////
 

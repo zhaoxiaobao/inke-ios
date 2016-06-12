@@ -16,13 +16,5 @@ extern NSString * const KxMovieParameterDisableDeinterlacing;   // BOOL
 
 @interface DetailViewController : UIViewController
 
-+ (id) movieViewControllerWithContentPath: (NSString *) path
-                               parameters: (NSDictionary *) parameters;
-
-@property (readonly) BOOL playing;
-
-- (void) play;
-- (void) pause;
-
 
 @end

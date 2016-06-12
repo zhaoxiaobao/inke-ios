@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:FFmpegTest.xcodeproj">
+      location = "group:/Users/zhaoyuan/Documents/Lib/完整项目/inke/FFmpegTest.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FFmpegTest.xcodeproj">
    </FileRef>
 </Workspace>

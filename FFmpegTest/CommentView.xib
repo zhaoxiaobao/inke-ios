@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CommentView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqo-eP-CMj" userLabel="Keyboard View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Az-WA-lF0" userLabel="Keyboard Text Field">
+                            <rect key="frame" x="8" y="555" width="502" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="vSh-ZS-TmY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4F-ks-0rD">
+                            <rect key="frame" x="533" y="555" width="46" height="30"/>
+                            <color key="backgroundColor" red="0.36470588240000001" green="0.71372549019999998" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="AtH-te-TOx"/>
+                                <constraint firstAttribute="width" constant="46" id="Gry-OK-Da9"/>
+                            </constraints>
+                            <state key="normal" title="发送">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="send:" destination="iN0-l3-epB" eventType="touchUpInside" id="4NW-SA-aud"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="s4F-ks-0rD" secondAttribute="bottom" constant="15" id="4vh-Iz-29y"/>
+                        <constraint firstItem="s4F-ks-0rD" firstAttribute="leading" secondItem="1Az-WA-lF0" secondAttribute="trailing" constant="23" id="63A-YK-Vu5"/>
+                        <constraint firstItem="1Az-WA-lF0" firstAttribute="leading" secondItem="Aqo-eP-CMj" secondAttribute="leading" constant="8" id="UmN-Ja-agb"/>
+                        <constraint firstAttribute="bottom" secondItem="1Az-WA-lF0" secondAttribute="bottom" constant="15" id="ndW-ZF-rnv"/>
+                        <constraint firstAttribute="trailing" secondItem="s4F-ks-0rD" secondAttribute="trailing" constant="21" id="rxh-f0-Gd1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Aqo-eP-CMj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="A8f-mf-RGe"/>
+                <constraint firstItem="Aqo-eP-CMj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cmU-74-i87"/>
+                <constraint firstItem="Aqo-eP-CMj" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="eDS-nf-u49"/>
+                <constraint firstItem="Aqo-eP-CMj" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="hcC-h8-nq9"/>
+            </constraints>
+            <connections>
+                <outlet property="send" destination="s4F-ks-0rD" id="cT0-l3-Mju"/>
+                <outlet property="textfield" destination="1Az-WA-lF0" id="Ivg-oe-eOi"/>
+            </connections>
+            <point key="canvasLocation" x="311" y="242"/>
+        </view>
+    </objects>
+</document>

@@ -7,16 +7,13 @@
 //
 
 #import "NewViewController.h"
-
 #import "UIImageView+WebCache.h"
 #import "NetworkSingleton.h"
 #import "LivesModel.h"
 #import "MJExtension.h"
 #import "PicCollectionViewCell.h"
 
-
 static NSString *const CollectionViewCellIdentifier = @"cell";
-
 
 @interface NewViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>{
     
@@ -26,7 +23,6 @@ static NSString *const CollectionViewCellIdentifier = @"cell";
 
 
 @property(nonatomic, strong) UICollectionView *collectionView;
-
 
 @end
 
@@ -51,7 +47,6 @@ static NSString *const CollectionViewCellIdentifier = @"cell";
 
 -(void)getListData{
     
-    //含有中文请求会出错
     NSString *url = [@"http://101.200.29.199/api/live/simpleall?cc=TG0001&conn=Wifi&cv=IK2.5.10_Iphone&devi=44d94653f9a0934cc94f12e542d7d363fae4256b&idfa=07506DA9-419B-460D-BAC8-E035DD6099BC&idfv=3D5EC291-4DDF-44FE-8AC7-B9598B532319&imei=&imsi=&lc=0000000000000014&multiaddr=1&osversion=ios_9.200000&proto=1&sid=EE3qPwpb4VuMR65ShMqfaS8i3&ua=iPhone%205s&uid=509195" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     [[NetworkSingleton sharedManager] getJsonData:nil url:url successBlock:^(id responseBody){
@@ -69,22 +64,13 @@ static NSString *const CollectionViewCellIdentifier = @"cell";
     } failureBlock:^(NSString *error){
         NSLog(@"%@",error);
     }];
-    
+
     
 }
-
-
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initData];
-    // Do any additional setup after loading the view.
-    
-    //确定是水平滚动，还是垂直滚动
-    //    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
-    //    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.headerReferenceSize = CGSizeMake(screen_width, 80);//头部
@@ -98,7 +84,6 @@ static NSString *const CollectionViewCellIdentifier = @"cell";
     self.collectionView.delegate=self;
     [self.collectionView setBackgroundColor:[UIColor clearColor]];
     
-    //注册Cell，必须要有
     [self.collectionView registerClass:[PicCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView"];
     
@@ -109,17 +94,14 @@ static NSString *const CollectionViewCellIdentifier = @"cell";
 #pragma mark - collection数据源代理
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    // 设置尾部控件的显示和隐藏
     return _listData.count;
 }
 
-//定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
-//头部显示的内容
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:
@@ -175,7 +157,6 @@ static NSString *const CollectionViewCellIdentifier = @"cell";
     cell.backgroundColor = navigationBarColor;
     [cell sizeToFit];
     if (!cell) {
-        NSLog(@"无法创建CollectionViewCell时打印，自定义的cell就不可能进来了。");
         return cell;
         
     }
@@ -185,35 +166,29 @@ static NSString *const CollectionViewCellIdentifier = @"cell";
     if ([model.creator.portrait rangeOfString:@"http"].location !=NSNotFound) {
         //$$字符串判断
         urlStr= model.creator.portrait;
-        
     }else{
         
         urlStr= [NSString stringWithFormat:@"http://img.meelive.cn/%@",model.creator.portrait];
         
     }
     
-    
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"default_room.jpg"] options:SDWebImageCacheMemoryOnly];
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    //临时改变个颜色，看好，只是临时改变的。如果要永久改变，可以先改数据源，然后在cellForItemAtIndexPath中控制。（和UITableView差不多吧！O(∩_∩)O~）
-    cell.backgroundColor = [UIColor greenColor];
-    
-    NSLog(@"item======%ld",(long)indexPath.item);
-    NSLog(@"row=======%ld",(long)indexPath.row);
-    NSLog(@"section===%ld",(long)indexPath.section);
-}
-
-//返回这个UICollectionView是否可以被选择
--(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
+
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+
+
+
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -17,13 +17,15 @@
 #import "KxMovieGLView.h"
 #import "KxLogger.h"
 
-#import "UIImageView+WebCache.h"
-#import "NetworkSingleton.h"
-#import "MJExtension.h"
 #import "LivesDetail.h"
 #import "TopTableViewCell.h"
 #import "MsgTableViewCell.h"
 
+
+#import "HYBubbleButton.h"
+
+#import "LiveTopHeaderView.h"
+#import "LiveHallYingPiaoView.h"
 
 #define kImageWidth 40
 
@@ -146,6 +148,8 @@ static NSMutableDictionary * gHistory;
 @property (readwrite) BOOL playing;
 @property (readwrite) BOOL decoding;
 @property (readwrite, strong) KxArtworkFrame *artworkFrame;
+@property (nonatomic, strong) HYBubbleButton *bubbleButton;
+
 @end
 
 @implementation KxMovieViewController
@@ -232,13 +236,8 @@ static NSMutableDictionary * gHistory;
 
 -(void)getListData{
     
-    //含有中文请求会出错
-    NSString *url = [@"http://service5.inke.tv/api/live/users?cc=TG0001&conn=Wifi&count=20&cv=IK2.5.10_Iphone&devi=44d94653f9a0934cc94f12e542d7d363fae4256b&id=1454996591363713&idfa=07506DA9-419B-460D-BAC8-E035DD6099BC&idfv=3D5EC291-4DDF-44FE-8AC7-B9598B532319&imei=&imsi=&lc=0000000000000014&osversion=ios_9.200000&proto=1&sid=EE3qPwpb4VuMR65ShMqfaS8i3&start=0&ua=iPhone%205s&uid=509195" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    //    [NSString stringWithFormat:@"%@&uid=%@&id=%@",url,_LivesModel.creator.ID,_LivesModel.ID]
-    
+    NSString *url = [[NSString stringWithFormat:@"http://service.ingkee.com/api/live/users?imsi=&uid=%@",_LivesModel.creator.ID] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[NetworkSingleton sharedManager] getJsonData:nil url:url successBlock:^(id responseBody){
-        NSLog(@"%@",responseBody);
         
         NSMutableArray *dataDic = [responseBody objectForKey:@"users"];
         total = [responseBody objectForKey:@"total"];
@@ -251,7 +250,7 @@ static NSMutableDictionary * gHistory;
         [_tableView2 reloadData];
         
     } failureBlock:^(NSString *error){
-        NSLog(@"%@",error);
+        
     }];
     
     
@@ -322,12 +321,9 @@ static NSMutableDictionary * gHistory;
         
         MsgTableViewCell*cell = [_tableView3 dequeueReusableCellWithIdentifier:cellIndentifier];
         if (cell == nil) {
-            cell = [[MsgTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+            cell=[[[NSBundle mainBundle]loadNibNamed:@"MsgTableViewCell" owner:nil options:nil]firstObject];
         }
         cell.backgroundColor=[UIColor clearColor];
-        
-        
-        cell.textLabel.text=@"11111";
         
         return cell;
         
@@ -339,12 +335,6 @@ static NSMutableDictionary * gHistory;
     
 }
 
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    NSLog(@"%f",scrollView.contentOffset.y);
-    
-}
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -378,11 +368,7 @@ static NSMutableDictionary * gHistory;
     [self addRecognizer];
     
     topBg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height)];
-    //    topBg.backgroundColor = [UIColor blackColor];
-    //    topBg.alpha=0.3;
     [self.view addSubview:topBg];
-    
-    
     
     int padding = 10;
     
@@ -390,14 +376,21 @@ static NSMutableDictionary * gHistory;
     
     UIView *view = UIView.new;
     view.frame=CGRectMake(0, 20, 80, 40);
-    view.backgroundColor = [UIColor blackColor];
-    view.alpha=0.5;
-    UIBezierPath *maskPath0 = [UIBezierPath bezierPathWithRoundedRect:view.bounds byRoundingCorners:UIRectCornerTopRight|UIRectCornerBottomRight  cornerRadii:CGSizeMake(15, 15)];
-    CAShapeLayer *maskLayer0 = [[CAShapeLayer alloc] init];
-    maskLayer0.frame =  superview.bounds;
-    maskLayer0.path = maskPath0.CGPath;
-    view.layer.mask = maskLayer0;
+//    view.backgroundColor = [UIColor blackColor];
+//    view.alpha=0.5;
+//    UIBezierPath *maskPath0 = [UIBezierPath bezierPathWithRoundedRect:view.bounds byRoundingCorners:UIRectCornerTopRight|UIRectCornerBottomRight  cornerRadii:CGSizeMake(15, 15)];
+//    CAShapeLayer *maskLayer0 = [[CAShapeLayer alloc] init];
+//    maskLayer0.frame =  superview.bounds;
+//    maskLayer0.path = maskPath0.CGPath;
+//    view.layer.mask = maskLayer0;
     [superview addSubview:view];
+    
+    LiveTopHeaderView *liveTopHeaderView =[LiveTopHeaderView createViewWithData:_LivesModel];
+    [superview addSubview:liveTopHeaderView];
+
+    liveTopHeaderView.top = 20;
+    
+    [superview bringSubviewToFront:liveTopHeaderView];
     
     
     UIView *tView=UIView.new;
@@ -522,55 +515,33 @@ static NSMutableDictionary * gHistory;
         make.height.equalTo(@30);
     }];
     
-    UIImageView  *imgView0=[UIImageView new];
-    [imgView0 setImage:[ UIImage imageNamed:@"bomber"]];
-    [superview addSubview:imgView0];
+    //    UIImageView  *imgView0=[UIImageView new];
+    //    [imgView0 setImage:[ UIImage imageNamed:@"bomber"]];
+    //    [superview addSubview:imgView0];
+    //
     
+    //    [imgView0 mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.center.equalTo(superview);
+    //        make.width.equalTo(@130);
+    //        make.height.equalTo(@130);
+    //    }];
+    //
     
-    [imgView0 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(superview);
-        make.width.equalTo(@130);
-        make.height.equalTo(@130);
-    }];
-    
-    
-    //$$关键帧动画
-    //    http://blog.csdn.net/fg313071405/article/details/42673197
-    
-    //    [self zoomIn:imgView0 andAnimationDuration:1.0 andWait:NO];
-    //    [self zoomOut:imgView0 andAnimationDuration:1.0 andWait:NO];
-    
-    
-    //    [self zoomIn:imgView0 andAnimationDuration:2];
-    
-    UIImageView  *imgView=[UIImageView new];
-    [imgView setImage:[ UIImage imageNamed:@"heart1"]];
-    [superview addSubview:imgView];
-    
-    
-    [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(superview).with.offset(-2*padding);
-        make.bottom.equalTo(superview).with.offset(-60);
-        make.width.equalTo(@30);
-        make.height.equalTo(@30);
-    }];
-    
-    
-    
-    
-    //    [self performSelector:@selector(doAnimation:) withObject:imgView afterDelay:1];
-    
-    //    [self doAnimation:imgView];
-    
-    UIView *viewL= [[UIView alloc] initWithFrame:CGRectMake(0, view.bottom+20, 140, 25)];
-    viewL.backgroundColor = [UIColor blackColor];
-    viewL.alpha=0.5;
+    LiveHallYingPiaoView *viewL = [LiveHallYingPiaoView createView];
+    //    viewL.frame = CGRectMake(0, view.bottom+20, 181, 25);
+    viewL.bottom=view.bottom+80;
+    viewL.yingpiao.text = _LivesModel.online_users;
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:viewL.bounds byRoundingCorners:UIRectCornerTopRight|UIRectCornerBottomRight  cornerRadii:CGSizeMake(15, 15)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame =  topBg.bounds;
     maskLayer.path = maskPath.CGPath;
     viewL.layer.mask = maskLayer;
     [topBg addSubview:viewL];
+    
+    //
+    //    NSArray *MsgDanMuTableViewCellNib = [[NSBundle mainBundle]loadNibNamed:@"MsgDanMuTableViewCell" owner:self options:nil];
+    //    UIView *MsgDanMuTableViewCell = [MsgDanMuTableViewCellNib objectAtIndex:0];
+    //    [topBg addSubview:MsgDanMuTableViewCell];
     
     
     UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(screen_width-40, screen_height-40, 30, 30)];
@@ -579,35 +550,47 @@ static NSMutableDictionary * gHistory;
     [btn addTarget:self action:@selector(doneDidTouch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
+    self.bubbleButton=[HYBubbleButton new];
+    [superview addSubview:self.bubbleButton];
+    [self.bubbleButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(superview).with.offset(-2*padding);
+        make.bottom.equalTo(superview).with.offset(-60);
+        make.width.equalTo(@45);
+        make.height.equalTo(@45);
+    }];
     
-//    UIView *_view=[[UIView alloc] initWithFrame:CGRectMake(0, 100, screen_width, 200)];
-//    _view.backgroundColor=[UIColor greenColor];
-//    [self.view addSubview:_view];
-//    
-//    [UIView animateWithDuration:4.0 // 动画时长
-//                          delay:2.0 // 动画延迟
-//         usingSpringWithDamping:0 // 类似弹簧振动效果 0~1
-//          initialSpringVelocity:5.0 // 初始速度
-//                        options:UIViewAnimationOptionCurveEaseInOut // 动画过渡效果
-//                     animations:^{
-//                         // code...
-//                         CGPoint point = _view.center;
-//                         point.y += 150;
-//                         [_view setCenter:point];
-//                     } completion:^(BOOL finished) {
-//                         // 动画完成后执行
-//                         // code...
-//                         [_view setAlpha:1];
-//                     }];
+    
+    
+    
+    NSTimer* _timer;
+    _timer = [NSTimer scheduledTimerWithTimeInterval:2.0f target:self
+                                            selector:@selector(heartSets) userInfo:nil repeats:YES];
+    
     
 }
+
+- (void)heartSets
+{
+    
+    self.bubbleButton.maxLeft = 30;
+    self.bubbleButton.maxRight = 25;
+    self.bubbleButton.maxHeight = 320;
+    self.bubbleButton.duration = 6;
+    self.bubbleButton.images = @[[UIImage imageNamed:@"heart1"]];
+    [self buttonHeart];
+}
+
+- (void)buttonHeart
+{
+    [self.bubbleButton generateBubbleInRandom];
+}
+
 
 - (void)zoomIn: (UIView *)view andAnimationDuration: (float) duration
 {
     CAKeyframeAnimation * animation;
     animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.duration = duration;
-    //animation.delegate = self;
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
     NSMutableArray *values = [NSMutableArray array];
@@ -618,8 +601,6 @@ static NSMutableDictionary * gHistory;
     animation.values = values;
     animation.timingFunction = [CAMediaTimingFunction functionWithName: @"easeInEaseOut"];
     [view.layer addAnimation:animation forKey:nil];
-    
-    [self zoomOut:view andAnimationDuration:1.0 andWait:NO];
     
 }
 
@@ -733,6 +714,8 @@ static NSMutableDictionary * gHistory;
         [UIView animateWithDuration:0.3 animations:^{
             topBg.transform = CGAffineTransformMakeTranslation(screen_width,0);
         }];
+        
+        
     }
     
 }

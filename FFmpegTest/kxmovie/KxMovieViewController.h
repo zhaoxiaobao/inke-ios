@@ -12,8 +12,6 @@
 #import <UIKit/UIKit.h>
 
 #import "LivesModel.h"
-
-
 @class KxMovieDecoder;
 
 extern NSString * const KxMovieParameterMinBufferedDuration;    // Float

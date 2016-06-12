@@ -7,128 +7,102 @@
 //
 
 #import "GZViewController.h"
+#import "GZTableViewCell.h"
+#import "DetailViewController.h"
+#import "LivesModel.h"
+#import "KxMovieViewController.h"
+#import "GZTableViewCellTop.h"
 
-@interface GZViewController ()
+
+@interface GZViewController ()<UITableViewDataSource,UITableViewDelegate>{
+    NSMutableArray *_listData;
+}
+
+@property(nonatomic, strong) UITableView *tableView;
+@property (assign, nonatomic) CGFloat bottomBarY;
+@property (assign, nonatomic) CGPoint pointNow;
+@property (strong, nonatomic) CCActivityIndicatorView *activityView;
+
 
 @end
 
 @implementation GZViewController
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.hidesBottomBarWhenPushed = YES;
-    }
-    return self;
-}
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor=[UIColor whiteColor];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [self initNav];
-    [self initView];
-    [self initData];
-}
+-(void)viewDidLoad{
+    [self  initView];
+    [self  initData];
+    self.activityView = [CCActivityIndicatorView new];
+    self.activityView.isTheOnlyActiveView = NO;
+    [self.activityView show];
 
--(void)initNav{
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screen_width, 64)];
-    backView.backgroundColor=navigationBarColor;
-    [self.view addSubview:backView];
-    //标题
-    UILabel *navTitle=[[UILabel alloc] init];
-    navTitle.frame=CGRectMake(screen_width/2-100, 30, 200, 25);
-    navTitle.text=@"";
-    navTitle.textAlignment=1;
-    navTitle.textColor=[UIColor whiteColor];
-    navTitle.font = [UIFont boldSystemFontOfSize:17.0f];
-    [backView addSubview:navTitle];
-    
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(0, 20, 54, 44);
-    UIImageView  *img=[[UIImageView alloc] initWithFrame:CGRectMake(10,10,13,23)];
-    [img setImage:[ UIImage imageNamed:@"icon_back"]];
-    [backBtn addSubview:img];
-    [backBtn addTarget:self action:@selector(backBtnTap:) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.adjustsImageWhenHighlighted = NO;
-    [backView addSubview:backBtn];
-    
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(screen_width-40, 30, 23, 23);
-    [rightBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    [rightBtn addTarget:self action:@selector(rightBtnTap:) forControlEvents:UIControlEventTouchUpInside];
-    rightBtn.adjustsImageWhenHighlighted = NO;
-    [backView addSubview:rightBtn];
 }
 
 
-- (void)initView{
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+
+# pragma mark Scroll View Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-//    UIView *topView = UIView.new;
-//    topView.backgroundColor = UIColor.greenColor;
-//    topView.layer.borderColor = UIColor.blackColor.CGColor;
-//    topView.layer.borderWidth = 2;
-//    [self.view addSubview:topView];
-//    
-//    UIView *topSubview = UIView.new;
-//    topSubview.backgroundColor = UIColor.blueColor;
-//    topSubview.layer.borderColor = UIColor.blackColor.CGColor;
-//    topSubview.layer.borderWidth = 2;
-//    [topView addSubview:topSubview];
-//    
-//    UIView *bottomView = UIView.new;
-//    bottomView.backgroundColor = UIColor.redColor;
-//    bottomView.layer.borderColor = UIColor.blackColor.CGColor;
-//    bottomView.layer.borderWidth = 2;
-//    [self.view addSubview:bottomView];
-//    
-//    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(@100);
-//        make.left.equalTo(self.view);
-//        make.right.equalTo(self.view);
-//        make.height.equalTo(@40);
-//    }];
-//    
-//    [topSubview mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(@200);
-//        make.centerX.equalTo(@0);
-//        make.width.equalTo(@20);
-//        make.height.equalTo(@20);
-//    }];
-//    
-//    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.mas_bottomLayoutGuide);
-//        make.left.equalTo(self.view);
-//        make.right.equalTo(self.view);
-//        make.height.equalTo(@40);
-//    }];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+}
+
+-(void)initData{
+    _listData = [[NSMutableArray alloc] init];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+        
+        [self getListData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //update UI
+
+        });
+    });
+    
+    
     
 }
 
 
-- (void)initData{
+-(void)getListData{
+    
+    //含有中文请求会出错
+    NSString *url = [@"http://101.200.29.199/api/live/simpleall?cc=TG0001&conn=Wifi&cv=IK2.5.10_Iphone&devi=44d94653f9a0934cc94f12e542d7d363fae4256b&idfa=07506DA9-419B-460D-BAC8-E035DD6099BC&idfv=3D5EC291-4DDF-44FE-8AC7-B9598B532319&imei=&imsi=&lc=0000000000000014&multiaddr=1&osversion=ios_9.200000&proto=1&sid=EE3qPwpb4VuMR65ShMqfaS8i3&ua=iPhone%205s&uid=509195" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [[NetworkSingleton sharedManager] getJsonData:nil url:url successBlock:^(id responseBody){
+        NSLog(@"%@",responseBody);
+        
+        NSMutableArray *dataDic = [responseBody objectForKey:@"lives"];
+        
+        for (int i=0; i<dataDic.count; i++) {
+            LivesModel *model=[LivesModel mj_objectWithKeyValues:dataDic[i]];
+            [_listData addObject:model];
+        }
+        
+        [self.tableView reloadData];
+        [self.activityView dismiss];
+
+        
+    } failureBlock:^(NSString *error){
+        NSLog(@"%@",error);
+    }];
+    
     
 }
 
 
-
-//响应事件
--(void)backBtnTap:(UIButton *)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-    
+-(void)initView{
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height-64) style:UITableViewStyleGrouped];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
 }
-
--(void)rightBtnTap:(UIButton *)sender{
-    
-}
-
-
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning {
@@ -136,14 +110,107 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 30;
 }
-*/
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    //    GZTableViewCellTop *headerView = [[GZTableViewCellTop alloc] init];
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"GZTableViewCellTop" owner:self options:nil];
+    UIView *headerView = [nib objectAtIndex:0];
+    return headerView;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.001;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    
+    return _listData.count;
+    
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 59+screen_width;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *cellIndentifier = @"cell";
+    GZTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+    if (cell == nil) {
+        
+        cell=[[[NSBundle mainBundle]loadNibNamed:@"GZTableViewCell" owner:nil options:nil]firstObject];
+    }
+    
+    LivesModel *model=_listData[indexPath.row];
+    
+    [cell setCellDataModel:model];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+    
+}
+
++(NSString*)encodeString:(NSString*)unencodedString{
+    
+    NSString *encodedString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)unencodedString,
+                                                              NULL,
+                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                              kCFStringEncodingUTF8));
+    
+    return encodedString;
+}
+
+//URLDEcode
+-(NSString *)decodeString:(NSString*)encodedString{
+    //NSString *decodedString = [encodedString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding ];
+    
+    NSString *decodedString  = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL,
+                                                                                                                     (__bridge CFStringRef)encodedString,
+                                                                                                                     CFSTR(""),
+                                                                                                                     CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+    return decodedString;
+}
+
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    LivesModel *model=_listData[indexPath.row];
+    
+    if (model.stream_addr==nil) {
+        return;
+    }
+    NSString *path=model.stream_addr;
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    // increase buffering for .wmv, it solves problem with delaying audio frames
+    if ([path.pathExtension isEqualToString:@"wmv"])
+        parameters[KxMovieParameterMinBufferedDuration] = @(5.0);
+    
+    // disable deinterlacing for iPhone, because it's complex operation can cause stuttering
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        parameters[KxMovieParameterDisableDeinterlacing] = @(YES);
+    
+    KxMovieViewController *vc = [KxMovieViewController movieViewControllerWithContentPath:path
+                                                                               parameters:parameters];
+    vc.LivesModel=model;
+    [self presentViewController:vc animated:YES completion:nil];
+    
+}
+
+
 
 @end

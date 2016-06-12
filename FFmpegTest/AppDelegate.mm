@@ -8,10 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "FirstViewController.h"
 #import "SecondViewController.h"
-#import "ThirdViewController.h"
-
 
 @interface AppDelegate ()
 
@@ -21,39 +18,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    FirstViewController *Vc1=[[FirstViewController alloc] init];
-    UINavigationController *nav1=[[UINavigationController alloc] initWithRootViewController:Vc1];
     SecondViewController *Vc2=[[SecondViewController alloc] init];
     UINavigationController *nav2=[[UINavigationController alloc] initWithRootViewController:Vc2];
-    ThirdViewController *Vc3=[[ThirdViewController alloc] init];
-    UINavigationController *nav3=[[UINavigationController alloc] initWithRootViewController:Vc3];
-    Vc1.title=@"关注";
-    Vc2.title=@"直播";
-    Vc3.title=@"我";
-    NSArray *navs=@[nav1,nav2,nav3];
     self.rootTabCtr=[[UITabBarController alloc] init];
-    [self.rootTabCtr setViewControllers:navs animated:YES];
     self.window.rootViewController=nav2;
-    UITabBar *tabbar=self.rootTabCtr.tabBar;
-    UITabBarItem *item1=[tabbar.items objectAtIndex:0];
-    UITabBarItem *item2=[tabbar.items objectAtIndex:1];
-    UITabBarItem *item3=[tabbar.items objectAtIndex:2];
-    
-    item1.selectedImage = [[UIImage imageNamed:@"12"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    item1.image = [[UIImage imageNamed:@"9"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    item2.selectedImage = [[UIImage imageNamed:@"13"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    item2.image = [[UIImage imageNamed:@"10"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    item3.selectedImage = [[UIImage imageNamed:@"14"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    item3.image = [[UIImage imageNamed:@"11"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:RGB(121, 31,211),NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];    
-    
-    
- 
     
     return YES;
 }

@@ -11,7 +11,6 @@
 #import "MJExtension.h"
 //#import <SDWebImage/UIImageView+WebCache.h>
 #import "LivesModel.h"
-
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
 #import "KxMovieDecoder.h"
@@ -20,13 +19,8 @@
 
 
 @interface DetailViewController (){
-    
     KxMovieDecoder      *_decoder;
     KxMovieGLView       *_glView;
-    
-    
-    
-    // // /////////////////////////////////////////////////////////////////
     NSMutableArray *_listData;
     
 }
@@ -34,49 +28,6 @@
 @end
 
 @implementation DetailViewController
-
-
-
-//- (id) initWithContentPath: (NSString *) path
-//                parameters: (NSDictionary *) parameters
-//{
-//    NSAssert(path.length > 0, @"empty path");
-//
-//    self = [super initWithNibName:nil bundle:nil];
-//    if (self) {
-//
-//        _moviePosition = 0;
-//        //        self.wantsFullScreenLayout = YES;
-//
-//        _parameters = parameters;
-//
-//        __weak DetailViewController *weakSelf = self;
-//
-//        KxMovieDecoder *decoder = [[KxMovieDecoder alloc] init];
-//
-//        decoder.interruptCallback = ^BOOL(){
-//
-//            __strong DetailViewController *strongSelf = weakSelf;
-//            return strongSelf ? [strongSelf interruptDecoder] : YES;
-//        };
-//
-//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//
-//            NSError *error = nil;
-//            [decoder openFile:path error:&error];
-//
-//            __strong DetailViewController *strongSelf = weakSelf;
-//            if (strongSelf) {
-//
-//                dispatch_sync(dispatch_get_main_queue(), ^{
-//
-//                    [strongSelf setMovieDecoder:decoder withError:error];
-//                });
-//            }
-//        });
-//    }
-//    return self;
-//}
 
 
 // ////////////////////////////////////////////
@@ -140,19 +91,20 @@
     
     NSString *url = @"http://101.200.29.199/api/live/next?action=down&cc=TG0001&conn=Wifi&cv=IK2.5.10_Iphone&devi=44d94653f9a0934cc94f12e542d7d363fae4256b&id=1454401299844860&idfa=07506DA9-419B-460D-BAC8-E035DD6099BC&idfv=3D5EC291-4DDF-44FE-8AC7-B9598B532319&imei=&imsi=&lc=0000000000000014&multiaddr=1&osversion=ios_9.200000&proto=1&sid=EE3qPwpb4VuMR65ShMqfaS8i3&source=0&step=0&ua=iPhone%205s&uid=509195";
     
-    
-    
     [[NetworkSingleton sharedManager] getJsonData:nil url:url successBlock:^(id responseBody){
         NSLog(@"%@",responseBody);
         
         NSMutableArray *dataDic = [responseBody objectForKey:@"infos"];
-        //        [_activityData removeAllObjects];
-        
+
         for (int i=0; i<dataDic.count; i++) {
             
             LivesModel *model=[LivesModel mj_objectWithKeyValues:dataDic[i]];
             
             [_listData addObject:model];
+            
+            
+            NSLog(@"%@",model.stream_addr);
+
             
             
         }

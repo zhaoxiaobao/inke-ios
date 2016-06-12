@@ -2,15 +2,12 @@
 //  MsgTableViewCell.h
 //  FFmpegTest
 //
-//  Created by zhaoyuan on 16/2/9.
+//  Created by zhaoyuan on 16/6/6.
 //  Copyright © 2016年 times. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface MsgTableViewCell : UITableViewCell
-
-@property (strong, nonatomic) UILabel *titleLabel;
-
 
 @end

@@ -9,7 +9,6 @@
 #import "HotViewController.h"
 #import "ListTableViewCell.h"
 #import "DetailViewController.h"
-
 #import "NetworkSingleton.h"
 #import "MJExtension.h"
 //#import <SDWebImage/UIImageView+WebCache.h>
@@ -259,6 +258,15 @@
     [self presentViewController:vc animated:YES completion:nil];
     
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+
+
+
+
 
 
 

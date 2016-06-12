@@ -114,9 +114,9 @@ static CGFloat TitlePagerViewTitleSpace = 50;
 - (void)adjustTitleViewByIndex:(CGFloat)index {
     for (UILabel *textLabel in self.subviews) {
         if ([textLabel isKindOfClass:[UILabel class]]) {
-            textLabel.textColor = [UIColor colorWithWhite:0.675 alpha:1.000];
+            textLabel.textColor = [UIColor whiteColor];
             if (textLabel.tag == index) {
-                textLabel.textColor = [UIColor blackColor];
+                textLabel.textColor = [UIColor whiteColor];
             }
         }
     }

@@ -90,6 +90,10 @@ static BOOL audioCodecIsSupported(AVCodecContext *audio)
 }
 
 #ifdef DEBUG
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
+#pragma clang diagnostic ignored "-Wunused-function"
+#pragma clang diagnostic ignored "-Wformat"
 static void fillSignal(SInt16 *outData,  UInt32 numFrames, UInt32 numChannels){
     static float phase = 0.0;
     
@@ -463,6 +467,9 @@ static int interrupt_callback(void *ctx);
 	   
     if (_videoStream != -1) {
         int64_t ts = (int64_t)(seconds / _videoTimeBase);
+        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
         avformat_seek_file(_formatCtx, _videoStream, ts, ts, ts, AVSEEK_FLAG_FRAME);
         avcodec_flush_buffers(_videoCodecCtx);
     }
@@ -472,6 +479,8 @@ static int interrupt_callback(void *ctx);
         avformat_seek_file(_formatCtx, _audioStream, ts, ts, ts, AVSEEK_FLAG_FRAME);
         avcodec_flush_buffers(_audioCodecCtx);
     }
+#pragma clang diagnostic pop
+
 }
 
 - (NSUInteger) frameWidth
@@ -1393,12 +1402,16 @@ static int interrupt_callback(void *ctx);
                     
                     if (!_disableDeinterlacing &&
                         _videoFrame->interlaced_frame) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
                         avpicture_deinterlace((AVPicture*)_videoFrame,
                                               (AVPicture*)_videoFrame,
                                               _videoCodecCtx->pix_fmt,
                                               _videoCodecCtx->width,
                                               _videoCodecCtx->height);
+                        
+#pragma clang diagnostic pop
                     }
                     
                     KxVideoFrame *frame = [self handleVideoFrame];
@@ -1621,6 +1634,7 @@ static int interrupt_callback(void *ctx)
 }
 
 @end
+ #pragma clang diagnostic pop
 
 static void FFLog(void* context, int level, const char* format, va_list args) {
     @autoreleasepool {

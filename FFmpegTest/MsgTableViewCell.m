@@ -2,7 +2,7 @@
 //  MsgTableViewCell.m
 //  FFmpegTest
 //
-//  Created by zhaoyuan on 16/2/9.
+//  Created by zhaoyuan on 16/6/6.
 //  Copyright © 2016年 times. All rights reserved.
 //
 
@@ -10,22 +10,8 @@
 
 @implementation MsgTableViewCell
 
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setView];
-    }
-    return self;
-}
-
-
-- (void)setView {
-    
-}
-
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 

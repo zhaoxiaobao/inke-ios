@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LiveTopHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="109" height="41"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5G-z0-GSq">
+                    <rect key="frame" x="0.0" y="0.0" width="109" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="fQ5-OG-2Q9"/>
+                        <constraint firstAttribute="width" constant="109" id="tsv-QK-OxV"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="live_bg_"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="room_answer_" translatesAutoresizingMaskIntoConstraints="NO" id="gxp-3I-yrH">
+                    <rect key="frame" x="6" y="4" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="J75-Tw-JR2"/>
+                        <constraint firstAttribute="height" constant="32" id="W0e-ao-UyF"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="50"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="直播Live" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jmg-Lc-gr4">
+                    <rect key="frame" x="42" y="4" width="49" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="49" id="4q9-k9-gsJ"/>
+                        <constraint firstAttribute="height" constant="16" id="AXp-NX-CQo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="91111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3a-1Y-J1H">
+                    <rect key="frame" x="42" y="20" width="41" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="6qT-7w-BIX"/>
+                        <constraint firstAttribute="width" constant="41" id="87o-BB-8Kz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="A5G-z0-GSq" secondAttribute="bottom" id="4xg-25-Jy7"/>
+                <constraint firstItem="gxp-3I-yrH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="8Kd-0t-lbq"/>
+                <constraint firstAttribute="trailing" secondItem="A5G-z0-GSq" secondAttribute="trailing" id="EkH-8L-8Q1"/>
+                <constraint firstAttribute="bottom" secondItem="gxp-3I-yrH" secondAttribute="bottom" constant="5" id="Hj4-CJ-Oip"/>
+                <constraint firstItem="A5G-z0-GSq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Kb0-eg-uPs"/>
+                <constraint firstItem="A5G-z0-GSq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="N5H-Pl-7nY"/>
+                <constraint firstItem="gxp-3I-yrH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="d4X-qR-1TV"/>
+                <constraint firstItem="M3a-1Y-J1H" firstAttribute="leading" secondItem="gxp-3I-yrH" secondAttribute="trailing" constant="4" id="kf8-UN-MgD"/>
+                <constraint firstItem="Jmg-Lc-gr4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="nLc-25-TP6"/>
+                <constraint firstAttribute="trailing" secondItem="Jmg-Lc-gr4" secondAttribute="trailing" constant="18" id="nf5-0X-0W5"/>
+                <constraint firstItem="Jmg-Lc-gr4" firstAttribute="leading" secondItem="gxp-3I-yrH" secondAttribute="trailing" constant="4" id="oox-U3-h1n"/>
+                <constraint firstItem="M3a-1Y-J1H" firstAttribute="top" secondItem="Jmg-Lc-gr4" secondAttribute="bottom" id="qZE-k8-tAY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="action" destination="A5G-z0-GSq" id="bfV-b3-jf6"/>
+                <outlet property="online_users" destination="M3a-1Y-J1H" id="m4N-dP-xEX"/>
+                <outlet property="portrait" destination="gxp-3I-yrH" id="dVb-KQ-IXa"/>
+            </connections>
+            <point key="canvasLocation" x="187.5" y="84.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="live_bg_" width="109" height="37"/>
+        <image name="room_answer_" width="56" height="56"/>
+    </resources>
+</document>

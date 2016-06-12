@@ -198,4 +198,9 @@
         [self.delegate setSubViewScrollStatus:YES];
     }
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 @end

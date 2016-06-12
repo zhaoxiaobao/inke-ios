@@ -130,6 +130,11 @@ static OSStatus renderCallback (void *inRefCon, AudioUnitRenderActionFlags	*ioAc
     LoggerAudio(3, @"%@", dump); \
 }
 
+
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#pragma clang diagnostic ignored "-Wformat"
 - (BOOL) checkAudioRoute
 {
     // Check what the audio route is.
@@ -530,3 +535,6 @@ static BOOL checkError(OSStatus error, const char *operation)
     
     return YES;
 }
+
+#pragma clang diagnostic pop
+

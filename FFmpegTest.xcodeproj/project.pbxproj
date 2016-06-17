@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0874321D111E81006BE627 /* ZYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0874311D111E81006BE627 /* ZYTabBarController.m */; };
 		3F13F2961C608A5400B023C9 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13F2951C608A5400B023C9 /* SecondViewController.m */; };
 		3F13F29F1C6091BE00B023C9 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13F29E1C6091BE00B023C9 /* ListTableViewCell.m */; };
 		3F13F2A21C6092A700B023C9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13F2A11C6092A700B023C9 /* DetailViewController.m */; };
@@ -48,6 +49,9 @@
 		3F3411661D0480DB0019A703 /* openViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F3411641D0480DB0019A703 /* openViewController.xib */; };
 		3F3414321D0C32C200105FA0 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3414301D0C32C200105FA0 /* ThirdViewController.m */; };
 		3F3414331D0C32C200105FA0 /* ThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F3414311D0C32C200105FA0 /* ThirdViewController.xib */; };
+		3F3ACA781D12D30D003311AD /* ZYPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3ACA771D12D30D003311AD /* ZYPlaceHolderTextView.m */; };
+		3F3ACA7B1D12D7CB003311AD /* PortraitImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3ACA7A1D12D7CB003311AD /* PortraitImageView.m */; };
+		3F3ACA7F1D12E456003311AD /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3ACA7E1D12E456003311AD /* ODRefreshControl.m */; };
 		3F4DAB061D08212000ACF429 /* ZYTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4DAB051D08212000ACF429 /* ZYTabBarView.m */; };
 		3F4DAB081D08214100ACF429 /* ZYTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4DAB071D08214100ACF429 /* ZYTabBarView.xib */; };
 		3F54685C1D045C3900463B3A /* GZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F54685A1D045C3900463B3A /* GZTableViewCell.m */; };
@@ -70,6 +74,8 @@
 		3FBDB1B11D0BD7D90083E625 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBDB1B01D0BD7D90083E625 /* CommentView.xib */; };
 		3FBDB1B41D0BDB380083E625 /* CommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBDB1B31D0BDB380083E625 /* CommentView.m */; };
 		3FE1664B1D091AE8000F0DC0 /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1664A1D091AE8000F0DC0 /* LiveViewController.m */; };
+		3FE55DC91D12A2D9009CA438 /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE55DC71D12A2D9009CA438 /* RankViewController.m */; };
+		3FE55DCA1D12A2D9009CA438 /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE55DC81D12A2D9009CA438 /* RankViewController.xib */; };
 		CFA795AD1AF5F1BB00E56796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA795AC1AF5F1BB00E56796 /* main.m */; };
 		CFA795B01AF5F1BB00E56796 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFA795AF1AF5F1BB00E56796 /* AppDelegate.mm */; };
 		CFA795B81AF5F1BB00E56796 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFA795B71AF5F1BB00E56796 /* Images.xcassets */; };
@@ -106,6 +112,8 @@
 /* Begin PBXFileReference section */
 		06DA92804920EEBBB82585D5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		124474BD8DB57B1C25912B66 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3F0874301D111E81006BE627 /* ZYTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYTabBarController.h; sourceTree = "<group>"; };
+		3F0874311D111E81006BE627 /* ZYTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYTabBarController.m; sourceTree = "<group>"; };
 		3F13F2941C608A5400B023C9 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		3F13F2951C608A5400B023C9 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		3F13F29B1C608BA400B023C9 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -187,6 +195,12 @@
 		3F34142F1D0C32C200105FA0 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		3F3414301D0C32C200105FA0 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		3F3414311D0C32C200105FA0 /* ThirdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThirdViewController.xib; sourceTree = "<group>"; };
+		3F3ACA761D12D30D003311AD /* ZYPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYPlaceHolderTextView.h; path = ZYPlaceHolderTextView/ZYPlaceHolderTextView.h; sourceTree = "<group>"; };
+		3F3ACA771D12D30D003311AD /* ZYPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYPlaceHolderTextView.m; path = ZYPlaceHolderTextView/ZYPlaceHolderTextView.m; sourceTree = "<group>"; };
+		3F3ACA791D12D7CB003311AD /* PortraitImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortraitImageView.h; sourceTree = "<group>"; };
+		3F3ACA7A1D12D7CB003311AD /* PortraitImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitImageView.m; sourceTree = "<group>"; };
+		3F3ACA7D1D12E456003311AD /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
+		3F3ACA7E1D12E456003311AD /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
 		3F4DAB041D08212000ACF429 /* ZYTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYTabBarView.h; sourceTree = "<group>"; };
 		3F4DAB051D08212000ACF429 /* ZYTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYTabBarView.m; sourceTree = "<group>"; };
 		3F4DAB071D08214100ACF429 /* ZYTabBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYTabBarView.xib; sourceTree = "<group>"; };
@@ -224,6 +238,9 @@
 		3FBDB1B31D0BDB380083E625 /* CommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentView.m; sourceTree = "<group>"; };
 		3FE166491D091AE8000F0DC0 /* LiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
 		3FE1664A1D091AE8000F0DC0 /* LiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveViewController.m; sourceTree = "<group>"; };
+		3FE55DC61D12A2D9009CA438 /* RankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
+		3FE55DC71D12A2D9009CA438 /* RankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
+		3FE55DC81D12A2D9009CA438 /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
 		8E57BC4196BE18221A85ED04 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA795A71AF5F1BB00E56796 /* 映客.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "映客.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA795AB1AF5F1BB00E56796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -379,6 +396,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F08742F1D111E81006BE627 /* ZYTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				3F0874301D111E81006BE627 /* ZYTabBarController.h */,
+				3F0874311D111E81006BE627 /* ZYTabBarController.m */,
+			);
+			name = ZYTabBarController;
+			path = FFmpegTest/ZYTabBarController;
+			sourceTree = SOURCE_ROOT;
+		};
 		3F13F28B1C6089C400B023C9 /* FirstVC（关注） */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +520,9 @@
 		3F18A6ED1C65CCD50039ADA6 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				3F3ACA7C1D12E456003311AD /* ODRefreshControl */,
+				3F3ACA751D12D2DC003311AD /* ZYPlaceHolderTextView */,
+				3F08742F1D111E81006BE627 /* ZYTabBarController */,
 				3FA41DBA1D0AE43200A53CFA /* Category */,
 				3FA41DC11D0AE82D00A53CFA /* CCActivityIndicatorView */,
 				3F4DAB031D08210300ACF429 /* ZYTabbar */,
@@ -599,6 +629,25 @@
 			name = Resource;
 			sourceTree = "<group>";
 		};
+		3F3ACA751D12D2DC003311AD /* ZYPlaceHolderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				3F3ACA761D12D30D003311AD /* ZYPlaceHolderTextView.h */,
+				3F3ACA771D12D30D003311AD /* ZYPlaceHolderTextView.m */,
+			);
+			name = ZYPlaceHolderTextView;
+			sourceTree = "<group>";
+		};
+		3F3ACA7C1D12E456003311AD /* ODRefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				3F3ACA7D1D12E456003311AD /* ODRefreshControl.h */,
+				3F3ACA7E1D12E456003311AD /* ODRefreshControl.m */,
+			);
+			name = ODRefreshControl;
+			path = FFmpegTest/ODRefreshControl;
+			sourceTree = SOURCE_ROOT;
+		};
 		3F4DAB031D08210300ACF429 /* ZYTabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -624,6 +673,9 @@
 				3F34142F1D0C32C200105FA0 /* ThirdViewController.h */,
 				3F3414301D0C32C200105FA0 /* ThirdViewController.m */,
 				3F3414311D0C32C200105FA0 /* ThirdViewController.xib */,
+				3FE55DC61D12A2D9009CA438 /* RankViewController.h */,
+				3FE55DC71D12A2D9009CA438 /* RankViewController.m */,
+				3FE55DC81D12A2D9009CA438 /* RankViewController.xib */,
 			);
 			name = "Controller(我)";
 			sourceTree = "<group>";
@@ -653,6 +705,8 @@
 				3F5468601D04763000463B3A /* GZTableViewCellTop.xib */,
 				3F5468621D04765000463B3A /* GZTableViewCellTop.h */,
 				3F5468631D04765000463B3A /* GZTableViewCellTop.m */,
+				3F3ACA791D12D7CB003311AD /* PortraitImageView.h */,
+				3F3ACA7A1D12D7CB003311AD /* PortraitImageView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1108,6 +1162,7 @@
 				3F1D8BB71D05DFAA00820D8B /* LiveTopHeaderView.xib in Resources */,
 				CFA796651AF6427200E56796 /* kxmovie.bundle in Resources */,
 				3FA7A1691D05AA5A00CA8132 /* MsgDanMuTableViewCell.xib in Resources */,
+				3FE55DCA1D12A2D9009CA438 /* RankViewController.xib in Resources */,
 				3F3411661D0480DB0019A703 /* openViewController.xib in Resources */,
 				3F5468611D04763000463B3A /* GZTableViewCellTop.xib in Resources */,
 				CFA795BB1AF5F1BB00E56796 /* LaunchScreen.xib in Resources */,
@@ -1205,6 +1260,7 @@
 				3F13F2961C608A5400B023C9 /* SecondViewController.m in Sources */,
 				3F13F2DC1C60DD2A00B023C9 /* UIImage+MultiFormat.m in Sources */,
 				3FA41DB91D0AE16800A53CFA /* ZYLivePreview.m in Sources */,
+				3F3ACA781D12D30D003311AD /* ZYPlaceHolderTextView.m in Sources */,
 				3F13F29F1C6091BE00B023C9 /* ListTableViewCell.m in Sources */,
 				3FA7A1621D059B7100CA8132 /* HYBubbleButton.m in Sources */,
 				CFA796661AF6427200E56796 /* KxMovieDecoder.m in Sources */,
@@ -1215,16 +1271,20 @@
 				3F13F2DD1C60DD2A00B023C9 /* UIImage+WebP.m in Sources */,
 				3F13F2D91C60DD2A00B023C9 /* SDWebImagePrefetcher.m in Sources */,
 				CFA795B01AF5F1BB00E56796 /* AppDelegate.mm in Sources */,
+				3F3ACA7B1D12D7CB003311AD /* PortraitImageView.m in Sources */,
+				3FE55DC91D12A2D9009CA438 /* RankViewController.m in Sources */,
 				CFA796681AF6427200E56796 /* KxMovieViewController.m in Sources */,
 				3F54685C1D045C3900463B3A /* GZTableViewCell.m in Sources */,
 				3F18A7261C65CCD50039ADA6 /* WCAlertView.m in Sources */,
 				3F13F2D41C60DD2A00B023C9 /* SDWebImageCompat.m in Sources */,
+				3F0874321D111E81006BE627 /* ZYTabBarController.m in Sources */,
 				3F13F2D21C60DD2A00B023C9 /* NSData+ImageContentType.m in Sources */,
 				3F13F2D51C60DD2A00B023C9 /* SDWebImageDecoder.m in Sources */,
 				3FA7A1681D05AA5A00CA8132 /* MsgDanMuTableViewCell.m in Sources */,
 				CFA795AD1AF5F1BB00E56796 /* main.m in Sources */,
 				3FA41DC61D0AE82D00A53CFA /* CCActivityIndicatorView.m in Sources */,
 				3FA7A15D1D059A7C00CA8132 /* MsgTableViewCell.m in Sources */,
+				3F3ACA7F1D12E456003311AD /* ODRefreshControl.m in Sources */,
 				3F18A7251C65CCD50039ADA6 /* ViewPagerController.m in Sources */,
 				3F4DAB061D08212000ACF429 /* ZYTabBarView.m in Sources */,
 				3FE1664B1D091AE8000F0DC0 /* LiveViewController.m in Sources */,

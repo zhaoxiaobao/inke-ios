@@ -13,11 +13,9 @@
 #import "GZViewController.h"
 #import "NewViewController.h"
 #import "openViewController.h"
-#import "ZYTabBarView.h"
 
 
 @interface SecondViewController ()<ViewPagerDataSource, ViewPagerDelegate, TitlePagerViewDelegate>
-
 @property (nonatomic, strong) GZViewController *newestTopicListVC;
 @property (nonatomic, strong) HotViewController *hotsTopicListVC;
 @property (nonatomic, strong) NewViewController *jobTopicListVC;
@@ -44,22 +42,8 @@
     [self initNav];
     
     [self reloadData];
-    
-    //    UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(screen_width/2-20,screen_height-70, 40, 40)];
-    //    [btn setImage:[ UIImage imageNamed:@"btn_dt_d_"] forState:UIControlStateNormal];
-    //
-    //    [btn addTarget:self action:@selector(addBtnTap:) forControlEvents:UIControlEventTouchUpInside];
-    //    [[UIApplication sharedApplication].keyWindow addSubview:btn];
-    
 }
 
-
--(void)addBtnTap:(UIButton *)sender{
-    
-    openViewController* VC  = [[openViewController alloc] init];
-    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:VC];
-    [self presentViewController:nav animated:YES completion:nil];
-}
 
 -(void)initNav{
     
@@ -71,27 +55,6 @@
     self.pagingTitleView.y+=10;
     [backView addSubview:self.pagingTitleView];
     
-    ZYTabBarView *_view=[ZYTabBarView createView] ;
-    _view.frame = CGRectMake(0, screen_height-64, screen_width, 64);
-    [_view.centreButton addTarget:self action:@selector(addBtnTap:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_view];
-    
-//    __weak typeof(self) _self = self;
-    [_view.firstButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id sender) {
-        _view.firstButton.selected = YES;
-        _view.secondButton.selected = NO;
-        
-    }];
-    
-    [_view.secondButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id sender) {
-        _view.secondButton.selected = YES;
-        _view.firstButton.selected = NO;
-        
-//        ThirdViewController* VC  = [[ThirdViewController alloc] init];
-//        [_self.navigationController pushViewController:VC animated:YES];
-        
-    }];
-
 }
 
 

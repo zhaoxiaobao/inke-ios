@@ -7,16 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZYTabBarView.h"
 
 @interface ZYTabBarController : UITabBarController {
-    UIButton *settingsButton;
-    UIButton *infoButton;
-    UIButton *aboutUsButton;
+   
 }
 
-@property (nonatomic, retain) UIButton *settingsButton;
-@property (nonatomic, retain) UIButton *infoButton;
-@property (nonatomic, retain) UIButton *aboutUsButton;
+@property (nonatomic, retain) ZYTabBarView  *tabbar;
 
 -(void) addCustomElements;
 -(void) selectTab:(int)tabID;

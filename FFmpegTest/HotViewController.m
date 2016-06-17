@@ -40,8 +40,20 @@
 -(void)viewDidLoad{
     [self  initView];
     [self  initData];
+    
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    [refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    [self.tableView sendSubviewToBack:refreshControl];
+    
+       
 }
 
+- (void)handleRefresh:(UIRefreshControl *)refreshControl {
+    [self.tableView reloadData];
+    [self.tableView layoutIfNeeded];
+    [refreshControl endRefreshing];
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

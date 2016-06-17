@@ -5,7 +5,7 @@
 //  Created by zhaoyuan on 16/6/5.
 //  Copyright © 2016年 times. All rights reserved.
 //
-
+#define MAX_LENGTH 20
 #import "openViewController.h"
 #import "LiveViewController.h"
 
@@ -67,6 +67,18 @@
     self.titlefiled.delegate = self;
     
 }
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField.text.length >= MAX_LENGTH && range.length == 0)
+    {
+        return NO; // return NO to not change text
+    }
+    else
+    {return YES;}
+}
+
 
 - (void)keyboardWasShown:(NSNotification*)aNotification{
     

@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 #import "SecondViewController.h"
+#import "ZYTabBarController.h"
+#import "ThirdViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,11 +21,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    UINavigationController *nav1=[[UINavigationController alloc] initWithRootViewController:[[SecondViewController alloc] init]];
+    UINavigationController *nav2=[[UINavigationController alloc] initWithRootViewController:[[ThirdViewController alloc] init]];
+    
+    ZYTabBarController *rootVC = [ZYTabBarController new];
+    [rootVC setViewControllers:@[nav1,nav2] animated:YES];
+    
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    SecondViewController *Vc2=[[SecondViewController alloc] init];
-    UINavigationController *nav2=[[UINavigationController alloc] initWithRootViewController:Vc2];
     self.rootTabCtr=[[UITabBarController alloc] init];
-    self.window.rootViewController=nav2;
+    self.window.rootViewController=rootVC;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     

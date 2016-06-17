@@ -42,7 +42,6 @@
                     <state key="selected" image="tab_live_p"/>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="NrO-oK-bHc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3M8-VQ-9Il"/>
                 <constraint firstAttribute="bottom" secondItem="MoV-70-yHe" secondAttribute="bottom" constant="-5" id="3uY-Dc-gLu"/>

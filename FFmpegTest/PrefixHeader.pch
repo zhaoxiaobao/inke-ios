@@ -15,6 +15,7 @@
 #import "CCActivityIndicatorView.h"
 #import "UIControl+YYAdd.h"
 #import "UIView+YYAdd.h"
+#import "ODRefreshControl.h"
 
 
 
@@ -22,10 +23,6 @@
 
 #ifndef _____Header_h
 #define _____Header_h
-
-
-// 1.获得RGB颜色
-//#define white    [UIColor whiteColor]
 
 #define fontBlue    [UIColor colorWithRed:0.271f green:0.549f blue:0.922f alpha:1.00f]
 
@@ -36,16 +33,20 @@
 #define bgroundColor [UIColor colorWithRed:0.933f green:0.937f blue:0.941f alpha:1.00f]
 #define orange  [UIColor colorWithRed:0.984 green:0.749 blue:0.420 alpha:1.00]
 
-// 2.屏幕大小尺寸
 #define screen_width [UIScreen mainScreen].bounds.size.width
 #define screen_height [UIScreen mainScreen].bounds.size.height
 #define bar_height [[UIApplication sharedApplication] statusBarFrame].size.height
-
-//3.字体灰色
 
 #define fontGray [UIColor colorWithRed:0.349f green:0.341f blue:0.345f alpha:1.00f]
 #define fontWhite [UIColor whiteColor]
 
 
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#   define DLog(...)
+#endif
+
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 #endif

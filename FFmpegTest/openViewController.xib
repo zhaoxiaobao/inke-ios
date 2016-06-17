@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="Btnbar" destination="0kW-qU-yNM" id="eFZ-m4-O0k"/>
                 <outlet property="startbtn" destination="Yhw-AH-ZYw" id="y4Q-v3-lK9"/>
-                <outlet property="titlefiled" destination="DfR-3e-BN0" id="0ni-uN-lpk"/>
+                <outlet property="titlefiled" destination="DfR-3e-BN0" id="1Sy-Da-tRG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -119,7 +119,7 @@
                         </mask>
                     </variation>
                 </view>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="写个直播标题吧" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DfR-3e-BN0">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DfR-3e-BN0" customClass="ZYPlaceHolderTextView">
                     <rect key="frame" x="45" y="139" width="511" height="70"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="aqv-eF-LRn"/>
@@ -127,6 +127,15 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="写个直播标题吧"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

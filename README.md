@@ -22,9 +22,9 @@
 # 示例图
 <table>
   <tr>
-    <th><img src="https://github.com/zhaoxiaobao/inke-ios/blob/master/Pic/1.png" width="250"/></th>
-    <th><img src="https://github.com/zhaoxiaobao/inke-ios/blob/master/Pic/2.png" width="250"/></th>
-    <th><img src="https://github.com/zhaoxiaobao/inke-ios/blob/master/Pic/3.png" width="250"/></th>
+    <th><img src="https://github.com/zhaoxiaobao/inke-ios/blob/master/Pic/1.gif" width="250"/></th>
+    <th><img src="https://github.com/zhaoxiaobao/inke-ios/blob/master/Pic/2.gif" width="250"/></th>
+    <th><img src="https://github.com/zhaoxiaobao/inke-ios/blob/master/Pic/3.gif" width="250"/></th>
   </tr>
 </table>
 
